@@ -1,0 +1,8 @@
+#!/bin/bash
+docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+docker rmi $(docker images | grep "none" | awk '{print $3}')
+docker build -t aylax:lynn-base -f docker.d/docker-base.dockerfile .
+docker build -t aylax:lynn-prelude -f docker.d/docker-prelude.dockerfile .
+docker build -t aylax:lynn-final -f docker.d/docker-final.dockerfile .
+docker run --rm -it aylax:lynn-final
+
