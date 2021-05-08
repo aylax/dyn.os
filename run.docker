@@ -7,5 +7,5 @@ docker build -t aylax:lynn-final -f docker.d/final .
 docker run --rm -p 127.0.0.1:6000:6000/udp aylax:lynn-final
 
 # run underline command
-# echo "send udp data" > /dev/udp/128.0.0.1/6000
+# echo "send udp data" > /dev/udp/127.0.0.1/6000
 
