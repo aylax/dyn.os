@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Cargo Build Stage
 # ------------------------------------------------------------------------------
-FROM aylax:lynn-prelude as builder
+FROM aylax:lynn-dynls as builder
 WORKDIR /app/lynn
 COPY . .
 RUN mkdir bin
@@ -20,5 +20,6 @@ WORKDIR /home/$CURRENT_USER/bin
 COPY --from=builder /app/lynn/bin/lynn lynn
 RUN chown -R $CURRENT_USER:$CURRENT_USER lynn
 USER $CURRENT_USER
+EXPOSE 6000/udp
 CMD ["./lynn"]
 

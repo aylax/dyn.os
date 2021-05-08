@@ -8,7 +8,7 @@ fn main() -> io::Result<()> {
 
 
 async fn async_run() -> io::Result<()> {
-    let socket = UdpSocket::bind("[::1]:6000").await?;
+    let socket = UdpSocket::bind("0.0.0.0:6000").await?;
     println!("Listening on {}", socket.local_addr()?);
     let mut buf = vec![0; 1024];
     let mut cnt = 0;

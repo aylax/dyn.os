@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
-# Init Basic Env Stage
+# Init Basic Context Stage
 # ------------------------------------------------------------------------------
-FROM rust:1.50 as cargo-build
+FROM rust:1.50 as builder
 RUN  sed -i s@/deb.debian.org/@/mirrors.ustc.edu.cn/@g /etc/apt/sources.list
 RUN apt-get clean && \
     apt-get update && \

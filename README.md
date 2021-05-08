@@ -16,3 +16,8 @@ exec 8<>/dev/udp/localhost/6000 # link dev/udp to file descriptor :8
 echo "send sth...">&8 # write to fd :8
 cat <&8 # out :8 content
 ```
+
+```sh
+# tree proj dir
+tree -aF -I 'target|.git' > .proj
+```

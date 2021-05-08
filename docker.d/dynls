@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
-# Cargo Deps Compile Stage
+# Dynamic Link Stage
 # ------------------------------------------------------------------------------
-FROM aylax:lynn-base as builder
+FROM aylax:lynn-basic as builder
 
 WORKDIR /app/lynn
 COPY .cargo .cargo

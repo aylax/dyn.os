@@ -1,8 +1,11 @@
 #!/bin/bash
 docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
 docker rmi $(docker images | grep "none" | awk '{print $3}')
-docker build -t aylax:lynn-base -f docker.d/docker-base.dockerfile .
-docker build -t aylax:lynn-prelude -f docker.d/docker-prelude.dockerfile .
-docker build -t aylax:lynn-final -f docker.d/docker-final.dockerfile .
-docker run --rm -it aylax:lynn-final
+docker build -t aylax:lynn-basic -f docker.d/basic .
+docker build -t aylax:lynn-dynls -f docker.d/dynls .
+docker build -t aylax:lynn-final -f docker.d/final .
+docker run --rm -p 127.0.0.1:6000:6000/udp aylax:lynn-final
+
+# run underline command
+# echo "send udp data" > /dev/udp/128.0.0.1/6000
 
