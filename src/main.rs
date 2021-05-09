@@ -6,7 +6,6 @@ fn main() -> io::Result<()> {
     task::block_on(async_run())
 }
 
-
 async fn async_run() -> io::Result<()> {
     let socket = UdpSocket::bind("0.0.0.0:6000").await?;
     println!("Listening on {}", socket.local_addr()?);
@@ -20,5 +19,4 @@ async fn async_run() -> io::Result<()> {
     } 
     Ok(())
 }
-
 
