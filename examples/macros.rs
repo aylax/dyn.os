@@ -61,6 +61,18 @@ macro_rules! min {
     )
 }
 
+macro_rules! calc {
+    (eval $e:expr) => {{
+         let val: usize = $e;
+         println!("{} = {}", stringify!{$e}, val);
+    }};
+
+    (eval $e:expr, $(eval $es:expr),+) => {{
+        calc! { eval $e }
+        calc! { $(eval $es),+ }
+    }};
+}
+
 fn main() {
     say_h!();
     crt_fn!(foo);
@@ -71,4 +83,9 @@ fn main() {
     println!("{}", min!(1u32));
     println!("{}", min!(1u32 + 2 , 2u32));
     println!("{}", min!(5u32, 2u32 * 3, 4u32));
+    calc! {
+        eval 1 + 2,
+        eval 3 + 4,
+        eval (2 * 3) + 1
+    }
 }
