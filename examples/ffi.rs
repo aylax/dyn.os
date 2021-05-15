@@ -1,9 +1,4 @@
-// ===============================================
 // ffi.rs --- FFI 
-// Author: AyLax.Zhou < zhoubye@foxmail.com >
-// Copyright (c) 2021-20xx AyLax.Zhou
-// License: GPLv3
-// ===============================================
 
 
 #[link(name = "m")]
