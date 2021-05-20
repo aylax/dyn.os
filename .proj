@@ -1,4 +1,5 @@
 .
+├── .DS_Store
 ├── .cargo/
 │   └── config.toml
 ├── .dockerignore
@@ -8,6 +9,7 @@
 ├── Cargo.toml
 ├── LICENSE
 ├── README.md
+├── crates/
 ├── docker.d/
 │   ├── basic
 │   ├── dynls
@@ -16,11 +18,20 @@
 │   └── refs/
 │       └── mtool.py
 ├── examples/
-│   └── main.rs
+│   ├── ffi.rs
+│   ├── lifetime.rs
+│   ├── macros.rs
+│   ├── main.rs
+│   ├── panics.rs
+│   ├── raii.rs
+│   ├── sockets.rs
+│   ├── testfn.rs
+│   └── traits.rs
+├── proj.gen
 ├── run.docker
 ├── src/
 │   └── main.rs
 └── tests/
     └── song.rs
 
-7 directories, 16 files
+8 directories, 26 files
