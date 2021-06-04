@@ -8,3 +8,5 @@ registry = "https://mirrors.ustc.edu.cn/crates.io-index"
 
 # replace-with = 'ustc'
 
+[build]
+target = "riscv64gc-unknown-none-elf"
