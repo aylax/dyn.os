@@ -1,5 +1,4 @@
 .
-├── .DS_Store
 ├── .cargo/
 │   └── config.toml
 ├── .dockerignore
@@ -9,7 +8,6 @@
 ├── Cargo.toml
 ├── LICENSE
 ├── README.md
-├── crates/
 ├── docker.d/
 │   ├── basic
 │   ├── dynls
@@ -30,8 +28,9 @@
 ├── proj.gen
 ├── run.docker
 ├── src/
+│   ├── lang_items.rs
 │   └── main.rs
 └── tests/
     └── song.rs
 
-8 directories, 26 files
+7 directories, 26 files
