@@ -1,31 +1,33 @@
 #![no_std]
 #![no_main]
-#![feature(llvm_asm)]
+#![feature(llvm_asm, global_asm)]
+#![feature(panic_info_message)]
+#![feature(alloc_error_handler)]
 
+#[macro_use]
+mod console;
 mod lang_items;
+mod sbi;
+
+global_asm!(include_str!("entry.asm"));
 
 
-const SYSCALL_EXIT: usize = 93;
-fn syscall(id: usize, arg0: usize, arg1: usize, arg2: usize) -> isize {
-    let mut ret: isize;
-    unsafe {
-        llvm_asm!("ecall"
-            : "={x10}" (ret)
-            : "{x10}" (arg0), "{x11}" (arg1), "{x12}" (arg2), "{x17}" (id)
-            : "memory"
-            : "volatile"
-
-        );
+fn clear_bss() {
+    extern "C" {
+        fn sbss();
+        fn ebss();
     }
-    ret
+    (sbss as usize..ebss as usize).for_each(|a| {
+        unsafe { (a as *mut u8).write_volatile(0) }
+    });
 }
 
-
-pub fn sys_exit(xstate: isize) -> isize {
-    syscall(SYSCALL_EXIT, xstate as usize, 0, 0)
-}
 
 #[no_mangle]
-extern "C" fn _start() {
-    sys_exit(9);
+pub fn rust_main() -> ! {
+    clear_bss();
+    println!("[kernel] Hello world!");
+    panic!("Unreachable in rust main!");
 }
+ 
+
