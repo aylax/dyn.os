@@ -26,7 +26,7 @@ fn clear_bss() {
 #[no_mangle]
 pub fn rust_main() -> ! {
     clear_bss();
-    println!("[kernel] Hello world!");
+    println!("\u{1b}[31m[kernel] Hello world!\u{1b}[0m");
     panic!("Unreachable in rust main!");
 }
  
