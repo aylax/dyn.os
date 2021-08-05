@@ -3,11 +3,10 @@
 │   └── rustsbi-qemu.bin*
 ├── .cargo/
 │   └── config.toml
-├── Cargo.lock
 ├── Cargo.toml
 ├── docker.d/
+│   ├── after
 │   ├── basic
-│   ├── dynls
 │   └── final
 ├── Dockerfile
 ├── .dockerignore
@@ -31,7 +30,7 @@
 ├── .proj
 ├── proj.gen
 ├── README.md
-├── run.docker
+├── run-as-docker.sh
 ├── src/
 │   ├── console.rs
 │   ├── entry.asm
@@ -46,4 +45,4 @@
 │   └── song.rs
 └── to_os.sh
 
-8 directories, 38 files
+8 directories, 37 files

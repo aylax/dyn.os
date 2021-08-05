@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------
 # Dynamic Link Stage
 # ------------------------------------------------------------------------------
-FROM aylax:lynn-basic as builder
+FROM aylax:dyn-os-basic as builder
 
-WORKDIR /app/lynn
+WORKDIR /app/dyn-os
 COPY .cargo .cargo
 COPY Cargo.toml Cargo.toml
 RUN mkdir src && echo "fn main () {}" >> src/main.rs
 RUN cargo build --release
-RUN rm -f target/release/deps/lynn*
+RUN rm -f target/release/deps/dyn-os*
 

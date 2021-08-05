@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------
 # Cargo Build Stage
 # ------------------------------------------------------------------------------
-FROM aylax:lynn-dynls as builder
-WORKDIR /app/lynn
+FROM aylax:dyn-os-after as builder
+WORKDIR /app/dyn-os
 COPY . .
 RUN mkdir bin
 RUN cargo build --release
-RUN cp target/release/lynn bin/lynn
+RUN cp target/release/dyn-os bin/dyn-os
 
 
 # ------------------------------------------------------------------------------
@@ -17,9 +17,9 @@ ENV CURRENT_USER=aylax
 RUN groupadd -g 1000 $CURRENT_USER
 RUN useradd -g $CURRENT_USER $CURRENT_USER
 WORKDIR /home/$CURRENT_USER/bin
-COPY --from=builder /app/lynn/bin/lynn lynn
-RUN chown -R $CURRENT_USER:$CURRENT_USER lynn
+COPY --from=builder /app/dyn-os/bin/dyn-os dyn-os
+RUN chown -R $CURRENT_USER:$CURRENT_USER dyn-os
 USER $CURRENT_USER
 EXPOSE 6000/udp
-CMD ["./lynn"]
+CMD ["./dyn-os"]
 
